@@ -1,10 +1,9 @@
 class bankaccount:
 
-        transaction = []
-
         def __init__(self,name,balance):
             self.name = name
             self.balance = balance
+            self.transaction = []
 
         def withdraw(self):
             withdraw_amount = float(input("Enter the amount you want to withdraw: "))
@@ -34,14 +33,12 @@ class bankaccount:
 
 def atmfunction():
     accounts = {}
-    names = []
     while True:
         name = input("Enter your name...\n")
-        if name in names:
+        if name in accounts:
             print("You are a registered user....")
         else :
             balance = float(input("Youre name is not present as a registered user, add your balance and will be registered...\n"))
-            names.append(name)
             accounts[name] = bankaccount(name,balance)
 
         while True:  
@@ -76,31 +73,3 @@ def atmfunction():
 
         
 atmfunction()
-
-# def withdraw(balance,transaction,name):
-#     withdraw_amount = float(input("Enter the amount you want to withdraw: "))
-#     if balance < withdraw_amount:
-#         print("Insufficient funds!")
-#         transaction[name].append("Withdraw : Failed")
-#         return balance
-#     else :
-#         balance-=withdraw_amount;
-#         print(f"Balance: {balance}")
-#         transaction[name].append(f"Withdraw : {withdraw_amount}")
-#         return balance
-
-# def deposit(balance,transaction,name):
-#     deposited_amount = float(input("Enter the amount you want to deposit: "))
-#     balance+=deposited_amount
-#     transaction[name].append(f"Deposited : {deposited_amount}")
-#     print(f"Balance: {balance}")
-#     return balance
-
-# def viewbalance(balance):
-#      print(f"Balance: {balance}")
-
-# def transactionhistory(transaction,name):
-#      j=1
-#      for i in transaction[name]:
-#       print(j,i,"\n")
-#       j+=1
